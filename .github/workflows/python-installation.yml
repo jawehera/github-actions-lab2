@@ -4,6 +4,7 @@ name: Installing Python
 jobs:
   build:
     runs-on: '${{ matrix.os }}'
+    
     strategy:
       matrix:
         os:
@@ -14,6 +15,10 @@ jobs:
           - "3.10"
           - "3.11"
           - "3.12"
+        exclude:
+          - os: macos-14
+            py-version: 3.12
+    
     steps:
       - name: Set up Python
         uses: actions/setup-python@v5
